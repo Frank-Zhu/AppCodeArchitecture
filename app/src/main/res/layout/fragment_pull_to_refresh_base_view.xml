@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe_container"
+    style="@style/MatchActivityStyle">
+
+    <com.ithooks.android.xreap.view.PageListView
+        android:id="@+id/page_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        custom:emptyView="@layout/include_empty_view"
+        custom:loadingView="@layout/include_loading_view"
+        custom:errorView="@layout/include_error_view" />
+
+</android.support.v4.widget.SwipeRefreshLayout>

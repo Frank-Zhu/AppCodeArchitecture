@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">掌上eap</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="empty_message">没有数据</string>
+    <string name="retry_button">重试</string>
+    <string name="error_message">服务器或网络错误</string>
+    <string name="loading_message">正在加载...</string>
+
+</resources>

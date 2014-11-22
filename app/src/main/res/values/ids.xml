@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- StatusListView IDs -->
+    <item name="tv_list_error" type="id" />
+    <item name="tv_list_empty" type="id" />
+    <item name="tv_list_loading" type="id" />
+    <item name="btn_list_empty" type="id" />
+    <item name="btn_list_error" type="id" />
+    <item name="pb_list_loading" type="id" />
+</resources>
