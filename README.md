@@ -4,7 +4,7 @@ AppCodeArchitecture
 安卓APP代码架构，包含比较常用的开源库使用
 
 <br>
-更多介绍可以看下我的这篇博客---->![Android App 代码架构](http://frank-zhu.github.io/2014-11-22-android-app-code-architecture.html)
+更多介绍可以看下我的这篇博客---->[Android App 代码架构](http://frank-zhu.github.io/2014-11-22-android-app-code-architecture.html)
 
 Thanks
 ============
