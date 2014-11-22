@@ -4,7 +4,7 @@ AppCodeArchitecture
 安卓APP代码架构，包含比较常用的开源库使用
 
 <br>
-![](https://raw.githubusercontent.com/Frank-Zhu/AppCodeArchitecture/master/art/art.jpg)
+更多介绍可以看下我的这篇博客---->![Android App 代码架构](http://frank-zhu.github.io/2014-11-22-android-app-code-architecture.html)
 
 Thanks
 ============
@@ -15,7 +15,7 @@ Thanks
 *   [Butterknife](https://github.com/JakeWharton/butterknife)
 *   [GSON](https://code.google.com/p/google-gson/)
 *   [EventBus](https://github.com/greenrobot/EventBus)
-*	[otto](https://github.com/square/otto)代替broadcast
+*	[otto](https://github.com/square/otto)
 *   [AppMsg](https://github.com/johnkil/Android-AppMsg)
 *   [CircleImageView](https://github.com/hdodenhof/CircleImageView)
 
