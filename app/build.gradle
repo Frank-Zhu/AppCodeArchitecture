@@ -13,7 +13,7 @@ android {
     }
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -25,7 +25,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:20.0.+'
     compile 'com.android.support:cardview-v7:21.0.+'
     compile 'com.android.support:recyclerview-v7:21.0.+'
-    compile 'com.android.support:support-v4:21.0.2'
+    compile 'com.android.support:support-v4:21.0.3'
 
     //View注解   代码地址-----> https://github.com/JakeWharton/butterknife
     compile 'com.jakewharton:butterknife:6.0.0'
@@ -35,7 +35,7 @@ dependencies {
     compile 'com.squareup.retrofit:retrofit:1.8.0'
     //网络请求库 代码地址-----> https://github.com/square/okhttp
     compile 'com.squareup.okhttp:okhttp:2.1.0'
-    compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.1.0'
     //消息通知数据更新（类似Broadcast）  代码地址-----> https://github.com/greenrobot/EventBus
     compile 'de.greenrobot:eventbus:2.4.0'
     //圆形头像  代码地址-----> https://github.com/hdodenhof/CircleImageView
@@ -44,4 +44,8 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3.1'
     //弹出提示信息    代码地址-----> https://github.com/johnkil/Android-AppMsg
     compile 'com.github.johnkil.android-appmsg:appmsg:1.2.0'
+    //SuperRecyclerView    代码地址-----> https://github.com/Malinskiy/SuperRecyclerView
+    compile 'com.malinskiy:superrecyclerview:1.0.1'
+    //超强滚动效果View    代码地址-----> https://github.com/ksoichiro/Android-ObservableScrollView
+    compile 'com.github.ksoichiro:android-observablescrollview:1.4.0'
 }

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="appmsg-1.2.0">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.johnkil.android-appmsg/appmsg/1.2.0/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.johnkil.android-appmsg/appmsg/1.2.0/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

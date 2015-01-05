@@ -2,4 +2,23 @@
 <resources>
     <color name="background">#ffffffff</color>
     <color name="normal_text">#ff000000</color>
+    <color name="primary">#E91E63</color>
+    <color name="primary_dark">#C2185B</color>
+    <color name="primary_light">#F8BBD0</color>
+    <color name="accent">#536dfe</color>
+    <color name="accent_light">#ff3e5efe</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#B6B6B6</color>
+    <color name="white">#ffffff</color>
+    <color name="bord_color">#eeffffff</color>
+    <color name="black_semi_transparent">#B2000000</color>
+
+    <color name="holo_blue_bright">#ff00ddff</color>
+    <color name="holo_green_light">#ff99cc00</color>
+    <color name="holo_orange_light">#ffffbb33</color>
+    <color name="holo_red_light">#ffff4444</color>
+
+    <drawable name="transparent">#00000000</drawable>
 </resources>
