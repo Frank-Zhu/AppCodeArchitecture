@@ -34,4 +34,16 @@ public class ViewHelper {
         }
         return view;
     }
+
+    /**
+     * 多个view隐藏或显示
+     *
+     * @param gone  true 隐藏；false 显示
+     * @param views 多个view对象
+     */
+    public static void setViewsGone(boolean gone, View... views) {
+        for (View view : views) {
+            setGone(view, gone);
+        }
+    }
 }

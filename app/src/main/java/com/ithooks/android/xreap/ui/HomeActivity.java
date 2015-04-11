@@ -1,7 +1,5 @@
 package com.ithooks.android.xreap.ui;
 
-import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,12 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 
 import com.ithooks.android.xreap.R;
+import com.ithooks.android.xreap.base.BaseActionBarActivity;
 
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends BaseActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

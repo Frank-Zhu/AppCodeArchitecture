@@ -1,5 +1,7 @@
 package com.ithooks.android.xreap.network.callback;
 
+import retrofit.RetrofitError;
+
 /**
  * Author:    ZhuWenWu
  * Version    V1.0
@@ -22,5 +24,5 @@ public interface UiDisplayListener<T> {
     /**
      * HTTP请求失败回调
      */
-    public void onFailDisplay();
+    public void onFailDisplay(RetrofitError retrofitError);
 }

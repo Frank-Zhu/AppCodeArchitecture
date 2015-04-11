@@ -34,7 +34,7 @@ public abstract class BaseHttpController<T> {
             getNetData();
         } else {
             if (uiDisplayListener != null) {
-                uiDisplayListener.onFailDisplay();
+                uiDisplayListener.onFailDisplay(null);
             }
         }
     }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background">#ffffffff</color>
-    <color name="normal_text">#ff000000</color>
+    <!-- 颜色生成网址  http://www.materialpalette.com/ -->
     <color name="primary">#E91E63</color>
     <color name="primary_dark">#C2185B</color>
     <color name="primary_light">#F8BBD0</color>
@@ -11,6 +10,9 @@
     <color name="secondary_text">#727272</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
+
+    <color name="background">#ffffffff</color>
+    <color name="normal_text">#ff000000</color>
     <color name="white">#ffffff</color>
     <color name="bord_color">#eeffffff</color>
     <color name="black_semi_transparent">#B2000000</color>

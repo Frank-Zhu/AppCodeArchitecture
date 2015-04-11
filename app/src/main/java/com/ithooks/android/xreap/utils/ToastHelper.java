@@ -1,5 +1,10 @@
 package com.ithooks.android.xreap.utils;
 
+import android.app.Activity;
+import android.view.Gravity;
+
+import com.devspark.appmsg.AppMsg;
+
 /**
  * Author:    ZhuWenWu
  * Version    V1.0

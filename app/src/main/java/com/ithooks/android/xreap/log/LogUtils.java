@@ -1,5 +1,7 @@
 package com.ithooks.android.xreap.log;
 
+import com.ithooks.android.xreap.BuildConfig;
+
 /**
  * Author:    ZhuWenWu
  * Version    V1.0
@@ -12,62 +14,56 @@ package com.ithooks.android.xreap.log;
  * Why & What is modified:
  */
 public class LogUtils {
-    private static final boolean DEBUG_V = true;
-    private static final boolean DEBUG_D = true;
-    private static final boolean DEBUG_I = true;
-    private static final boolean DEBUG_W = true;
-    private static final boolean DEBUG_E = true;
-
     public static void v(String tag, String msg, Throwable tr) {
-        if (DEBUG_V) {
+        if (BuildConfig.LOG_DEBUG) {
             android.util.Log.v(tag, msg, tr);
         }
     }
 
     public static void d(String tag, String msg) {
-        if (DEBUG_D) {
+        if (BuildConfig.LOG_DEBUG) {
             android.util.Log.d(tag, msg);
         }
     }
 
     public static void d(String tag, String msg, Throwable tr) {
-        if (DEBUG_D) {
+        if (BuildConfig.LOG_DEBUG) {
             android.util.Log.d(tag, msg, tr);
         }
     }
 
     public static void i(String tag, String msg) {
-        if (DEBUG_I) {
+        if (BuildConfig.LOG_DEBUG) {
             android.util.Log.i(tag, msg);
         }
     }
 
     public static void i(String tag, String msg, Throwable tr) {
-        if (DEBUG_I) {
+        if (BuildConfig.LOG_DEBUG) {
             android.util.Log.i(tag, msg, tr);
         }
     }
 
     public static void w(String tag, String msg, Throwable tr) {
-        if (DEBUG_W) {
+        if (BuildConfig.LOG_DEBUG) {
             android.util.Log.w(tag, msg, tr);
         }
     }
 
     public static void w(String tag, Throwable tr) {
-        if (DEBUG_W) {
+        if (BuildConfig.LOG_DEBUG) {
             android.util.Log.w(tag, tr);
         }
     }
 
     public static void e(String tag, String msg, Throwable tr) {
-        if (DEBUG_E) {
+        if (BuildConfig.LOG_DEBUG) {
             android.util.Log.e(tag, msg, tr);
         }
     }
 
     public static void e(String tag, String msg) {
-        if (DEBUG_E) {
+        if (BuildConfig.LOG_DEBUG) {
             android.util.Log.e(tag, msg);
         }
     }

@@ -60,12 +60,12 @@ public abstract class RecycleRefreshBaseFragment extends BaseFragment {
                 onDataRefresh();
             }
         });
-        mRecycleView.setOnMoreListener(new OnMoreListener() {
+        mRecycleView.setupMoreListener(new OnMoreListener() {
             @Override
             public void onMoreAsked(int numberOfItems, int numberBeforeMore, int currentItemPos) {
                 onDataMore();
             }
-        });
+        }, 1);
     }
 
     public abstract void onDataRefresh();
