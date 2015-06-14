@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+//定义打包时间函数
 def packageTime() {
     return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }
@@ -13,6 +14,11 @@ android {
 
         }
         release {
+            //storeFile file("../yourapp.keystore")
+            //storePassword "your password"
+            //keyAlias "your alias"
+            //keyPassword "your password"
+
             //setting your signing.properties
             //first, add signing.properties to ./app/
             //second, add property STORE_FILE, STORE_PASSWORD, KEY_ALIAS, KEY_PASSWORD
@@ -32,13 +38,21 @@ android {
     buildTypes {
         debug {
             buildConfigField "boolean", "LOG_DEBUG", "true"//是否输出LOG信息
-            buildConfigField "String", "API_HOST", "\"http://\""//API Host
+            buildConfigField "String", "API_HOST", "\"http://api.test.com\""//API Host
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
         }
 
         release {
             buildConfigField "boolean", "LOG_DEBUG", "false"//是否输出LOG信息
-            buildConfigField "String", "API_HOST", "\"http://\""//API Host
-            minifyEnabled false
+            buildConfigField "String", "API_HOST", "\"http://api.release.com\""//API Host
+            minifyEnabled false//混淆编译
+            zipAlignEnabled true
+            //移除无用的资源文件
+            shrinkResources true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -60,7 +74,8 @@ android {
                 File outputDirectory = new File(outputFile.parent);
                 def fileName
                 if (variant.buildType.name == "release") {
-                    fileName = "app_v${defaultConfig.versionName}_${packageTime()}.apk"
+                    // 输出apk名称为app_v1.0.0_2015-06-14_playStore.apk
+                    fileName = "app_v${defaultConfig.versionName}_${packageTime()}_${variant.productFlavors[0].name}.apk"
                 } else {
                     fileName = "app_v${defaultConfig.versionName}_${packageTime()}_beta.apk"
                 }
@@ -69,6 +84,28 @@ android {
         }
     }
 
+    productFlavors {
+        playStore {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "playStore"]
+        }
+        miui {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "miui"]
+        }
+        wandoujia {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+        }
+    }
+
+//批量替换
+//    productFlavors {
+//        palyStore {}
+//        miui {}
+//        wandoujia {}
+//    }
+//
+//    productFlavors.all {
+//        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+//    }
 }
 
 File propFile = file('signing.properties');
