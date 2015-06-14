@@ -12,5 +12,5 @@ package com.ithooks.android.xreap.app;
  * Why & What is modified:
  */
 public class AppApiContact {
-    public static final String API_HOST = "http://";//API Host
+//    public static final String API_HOST = "http://";//API Host
 }

@@ -1,11 +1,12 @@
 package com.ithooks.android.xreap.app;
 
-import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDexApplication;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.bind.DateTypeAdapter;
+import com.ithooks.android.xreap.BuildConfig;
 import com.ithooks.android.xreap.network.http.AppApiService;
 import com.ithooks.android.xreap.utils.SharedPreferencesHelper;
 import com.squareup.okhttp.OkHttpClient;
@@ -28,7 +29,7 @@ import retrofit.converter.GsonConverter;
  * 14-11-22      ZhuWenWu            1.0                    1.0
  * Why & What is modified:
  */
-public class AppApplication extends Application {
+public class AppApplication extends MultiDexApplication {
     private static Context sContext;
     private static AppApiService sAppApiService;//API 请求Service对象
 
@@ -47,7 +48,7 @@ public class AppApplication extends Application {
         OkHttpClient okHttpClient = new OkHttpClient();
         okHttpClient.setConnectTimeout(15, TimeUnit.SECONDS);
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(AppApiContact.API_HOST)
+                .setEndpoint(BuildConfig.API_HOST)
                 .setConverter(new GsonConverter(gson))
                 .setClient(new OkClient(okHttpClient))
                 .build();

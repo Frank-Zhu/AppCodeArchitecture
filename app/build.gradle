@@ -1,40 +1,105 @@
 apply plugin: 'com.android.application'
 
+def packageTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
 android {
-    compileSdkVersion 21
-    buildToolsVersion "22.0.1"
+    compileSdkVersion Integer.parseInt(ANDROID_BUILD_COMPILE_SDK_VERSION)
+    buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
+
+    signingConfigs {
+        debug {
+
+        }
+        release {
+            //setting your signing.properties
+            //first, add signing.properties to ./app/
+            //second, add property STORE_FILE, STORE_PASSWORD, KEY_ALIAS, KEY_PASSWORD
+        }
+    }
 
     defaultConfig {
         applicationId "com.ecloud.android.xreap"
-        minSdkVersion 14
-        targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Integer.parseInt(MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(ANDROID_BUILD_TARGET_SDK_VERSION)
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
+
+        // dex突破65535的限制
+        multiDexEnabled true
     }
     buildTypes {
         debug {
             buildConfigField "boolean", "LOG_DEBUG", "true"//是否输出LOG信息
+            buildConfigField "String", "API_HOST", "\"http://\""//API Host
         }
 
         release {
             buildConfigField "boolean", "LOG_DEBUG", "false"//是否输出LOG信息
+            buildConfigField "String", "API_HOST", "\"http://\""//API Host
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+        abortOnError false
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                File outputDirectory = new File(outputFile.parent);
+                def fileName
+                if (variant.buildType.name == "release") {
+                    fileName = "app_v${defaultConfig.versionName}_${packageTime()}.apk"
+                } else {
+                    fileName = "app_v${defaultConfig.versionName}_${packageTime()}_beta.apk"
+                }
+                output.outputFile = new File(outputDirectory, fileName)
+            }
+        }
+    }
+
+}
+
+File propFile = file('signing.properties');
+if (propFile.exists()) {
+    def Properties props = new Properties()
+    props.load(new FileInputStream(propFile))
+    if (props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
+            props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
+        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
+        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
+        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
+        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
+    } else {
+        android.buildTypes.release.signingConfig = null
+    }
+} else {
+    android.buildTypes.release.signingConfig = null
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.android.support:cardview-v7:21.0.3'
     compile 'com.android.support:recyclerview-v7:21.0.3'
-    compile 'com.android.support:support-v4:22.0.0'
+//    compile 'com.android.support:support-v4:22.0.0'
+    compile 'com.android.support:multidex:1.0.0'
 
     //View注解   代码地址-----> https://github.com/JakeWharton/butterknife
     compile 'com.jakewharton:butterknife:6.1.0'
     //图片加载  代码地址-----> https://github.com/square/picasso
-    compile 'com.squareup.picasso:picasso:2.4.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
     //API网络请求注解库    代码地址-----> https://github.com/square/retrofit
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     //网络请求库 代码地址-----> https://github.com/square/okhttp
@@ -49,7 +114,7 @@ dependencies {
     //弹出提示信息    代码地址-----> https://github.com/johnkil/Android-AppMsg
     compile 'com.github.johnkil.android-appmsg:appmsg:1.2.0'
     //SuperRecyclerView    代码地址-----> https://github.com/Malinskiy/SuperRecyclerView
-    compile 'com.malinskiy:superrecyclerview:1.0.1'
+    compile 'com.malinskiy:superrecyclerview:1.1.0'
     //超强滚动效果View    代码地址-----> https://github.com/ksoichiro/Android-ObservableScrollView
-    compile 'com.github.ksoichiro:android-observablescrollview:1.5.0'
+    compile 'com.github.ksoichiro:android-observablescrollview:1.5.2'
 }
