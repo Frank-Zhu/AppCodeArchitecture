@@ -6,6 +6,10 @@ AppCodeArchitecture
 <br>
 更多介绍可以看下我的这篇博客---->[Android App 代码架构](http://frank-zhu.github.io/2014-11-22-android-app-code-architecture.html)
 
+UPDATE
+============
+打包签名相关的可以看下这篇博客----->[安卓集成发布详解（二）](http://frank-zhu.github.io/android/2015/06/15/android-release_app_build_gradle/)
+
 Thanks
 ============
 *   [Retrofit](https://github.com/square/retrofit)

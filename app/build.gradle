@@ -40,8 +40,8 @@ android {
             buildConfigField "boolean", "LOG_DEBUG", "true"//是否输出LOG信息
             buildConfigField "String", "API_HOST", "\"http://api.test.com\""//API Host
             minifyEnabled false
-            zipAlignEnabled false
-            shrinkResources false
+            zipAlignEnabled true
+            shrinkResources true
             signingConfig signingConfigs.debug
         }
 
@@ -67,6 +67,7 @@ android {
         abortOnError false
     }
 
+    //修改生成的最终文件名
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             def outputFile = output.outputFile
@@ -74,7 +75,7 @@ android {
                 File outputDirectory = new File(outputFile.parent);
                 def fileName
                 if (variant.buildType.name == "release") {
-                    // 输出apk名称为app_v1.0.0_2015-06-14_playStore.apk
+                    // 输出apk名称为app_v1.0.0_2015-06-15_playStore.apk
                     fileName = "app_v${defaultConfig.versionName}_${packageTime()}_${variant.productFlavors[0].name}.apk"
                 } else {
                     fileName = "app_v${defaultConfig.versionName}_${packageTime()}_beta.apk"
@@ -153,5 +154,5 @@ dependencies {
     //SuperRecyclerView    代码地址-----> https://github.com/Malinskiy/SuperRecyclerView
     compile 'com.malinskiy:superrecyclerview:1.1.0'
     //超强滚动效果View    代码地址-----> https://github.com/ksoichiro/Android-ObservableScrollView
-    compile 'com.github.ksoichiro:android-observablescrollview:1.5.2'
+    compile 'com.github.ksoichiro:android-observablescrollview:1.5.1'
 }
