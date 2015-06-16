@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 /**
  * Author:    ZhuWenWu
  * Version    V1.0
@@ -43,6 +45,64 @@ public abstract class BaseRecyclerMultipleItemAdapter<T> extends BaseRecyclerAda
 
     public boolean isBottomView(int position) {
         return mBottomCount != 0 && position >= (mHeaderCount + getContentItemCount());
+    }
+
+    @Override
+    public T getItemData(int position) {
+        int index = position - mHeaderCount;
+        if (index >= super.getItemCount()) {
+            return null;
+        }
+        return super.getItemData(index);
+    }
+
+    /**
+     * 移除某一条记录
+     *
+     * @param position 移除数据的position 如果有Header需要减去Header数量
+     */
+    public void removeItem(int position) {
+        if (position < mDataList.size()) {
+            mDataList.remove(position);
+            notifyItemRemoved(mHeaderCount + position);
+        }
+    }
+
+    /**
+     * 添加一条记录
+     *
+     * @param data     需要加入的数据结构
+     * @param position 插入数据的位置 如果有Header需要减去Header数量
+     */
+    public void addItem(T data, int position) {
+        if (position <= mDataList.size()) {
+            mDataList.add(position, data);
+            notifyItemInserted(mHeaderCount + position);
+        }
+    }
+
+    /**
+     * 移除所有记录
+     */
+    public void clearItems() {
+        int size = mDataList.size();
+        if (size > 0) {
+            mDataList.clear();
+            notifyItemRangeRemoved(mHeaderCount, size);
+        }
+    }
+
+    /**
+     * 批量添加记录
+     *
+     * @param data     需要加入的数据结构
+     * @param position 插入数据的位置 如果有Header需要减去Header数量
+     */
+    public void addItems(List<T> data, int position) {
+        if (position <= mDataList.size() && data != null && data.size() > 0) {
+            mDataList.addAll(position, data);
+            notifyItemRangeChanged(mHeaderCount + position, data.size());
+        }
     }
 
     @Override
