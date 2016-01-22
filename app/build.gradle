@@ -109,7 +109,7 @@ android {
 //    }
 }
 
-File propFile = file('signing.properties');
+def propFile = project.rootProject.file('signing.properties');
 if (propFile.exists()) {
     def Properties props = new Properties()
     props.load(new FileInputStream(propFile))
